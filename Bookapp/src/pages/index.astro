@@ -12,7 +12,15 @@
 		<title>Bookapp</title>
 	</head>
 	<body>
-		
+		<header>
+			<div class="izquierda">
+				<p class="logo">Bookapp</p>
+			  </div>
+			  <div class="centro">
+				<input class="buscador" type="text" placeholder="Buscar libro..." />
+			  </div>
+			  <div class="derecha"></div>
+</header>
 	</body>
 </html>
 
@@ -23,9 +31,38 @@
 
 	body {
       background-color: #ebe4c7;
-      font-family: Georgia, serif;
-      color: #c8b89a;
       min-height: 100vh;
       padding: 2rem;
     }
+
+
+header {
+  background-color: rgb(122, 122, 91);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  
+}
+.izquierda, .centro, .derecha {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.logo {
+	font-family: Georgia, serif;
+    color: #e6e1da;
+}
+.buscador {
+  width: 7cm;
+  padding: 0.5rem 1rem;
+  border: 1px solid #c4a882;
+  border-radius: 20px;
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  background-color: white;
+}
+.izquierda{
+	justify-content: flex-start;
+	font-size: 27px;
+}
  </style>
