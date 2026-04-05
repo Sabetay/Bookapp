@@ -274,10 +274,22 @@ header {
   border: none;
   cursor: pointer;
   font-size: 1.2rem;
-  color: #c4b49a;
+  color: #e2df0a;
 }
 
 .estrella.llena {
-  color: #E8A020;
+  color: #fffb00;
+}
+/*Aca esta la responsive. Si la pantalla es como la de una tablet se pone 3 columnas de libros, y si es un celular se ponen 2 columnas.*/
+@media (max-width: 768px) {
+  .grilla {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .grilla {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
  </style>
