@@ -207,6 +207,59 @@
       });
     });
   });
+
+  // Busca el botón y el input
+const boton = document.querySelector('.boton-buscar');
+const input = document.querySelector('.buscador');
+const grilla = document.querySelector('.grilla');
+
+// Cuando apretás el botón, busca el libro
+boton.addEventListener('click', () => {
+  const busqueda = input.value;
+
+  // Le pregunta a la API de Open Library
+  fetch(`https://openlibrary.org/search.json?q=${busqueda}&limit=1`)
+    .then(respuesta => respuesta.json())
+    .then(datos => {
+      const libro = datos.docs[0];
+
+      // Arma la imagen con el id de portada
+      const idPortada = libro.cover_i;
+      const imagen = `https://covers.openlibrary.org/b/id/${idPortada}-M.jpg`;
+
+      // Crea la tarjeta nueva
+      const tarjeta = document.createElement('div');
+      tarjeta.classList.add('portada');
+      tarjeta.innerHTML = `
+        <img src="${imagen}" alt="${libro.title}" />
+        <div class="estrellas">
+          <button class="estrella" data-valor="1">★</button>
+          <button class="estrella" data-valor="2">★</button>
+          <button class="estrella" data-valor="3">★</button>
+          <button class="estrella" data-valor="4">★</button>
+          <button class="estrella" data-valor="5">★</button>
+        </div>
+      `;
+
+      // La agrega a la grilla
+      grilla.appendChild(tarjeta);
+
+      // Le activa las estrellas
+      tarjeta.querySelectorAll('.estrella').forEach(estrella => {
+        estrella.addEventListener('click', () => {
+          const valor = Number(estrella.dataset.valor);
+          tarjeta.querySelectorAll('.estrella').forEach(e => {
+            Number(e.dataset.valor) <= valor
+              ? e.classList.add('llena')
+              : e.classList.remove('llena');
+          });
+        });
+      });
+
+      // Limpia el buscador
+      input.value = '';
+    });
+});
 </script>
 	</body>
 </html>
