@@ -229,7 +229,7 @@ boton.addEventListener('click', () => {
 
       // Crea la tarjeta nueva
       const tarjeta = document.createElement('div');
-      tarjeta.classList.add('portada');
+      tarjeta.className = 'portada';
       tarjeta.innerHTML = `
         <img src="${imagen}" alt="${libro.title}" />
         <div class="estrellas">
@@ -269,11 +269,11 @@ boton.addEventListener('click', () => {
 <style>
 	* { margin: 0; padding: 0; box-sizing: border-box; }
 
-	body {
-      background-color: #ebe4c7;
-      min-height: 100vh;
-      padding: 2rem;
-    }
+  body {
+  background-color: #ebe4c7;
+  min-height: 100vh;
+  padding: 0;
+}
 
 
 header {
@@ -357,6 +357,7 @@ header {
   color: #57513e;
   font-size: 0.9rem;
   border-top: 1px solid #4b453d;
+  width: 100%;
 }
 
 .boton-buscar {
@@ -368,5 +369,12 @@ header {
   cursor: pointer;
   font-size: 1rem;
   margin-left: 8px;
+}
+
+.grilla {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1.5cm;
+  padding: 2rem;
 }
  </style>
